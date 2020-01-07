@@ -7,7 +7,6 @@
             "email": "wanzheng19880130@163.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php":">=5.6.0",
         "xiongmao-webpay/xiongmao-webpay": "dev-master"
