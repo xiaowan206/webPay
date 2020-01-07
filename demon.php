@@ -43,4 +43,5 @@ $params = array(
     'billDate' => date('Ymd', time()),
 );
 
-$url = $pay->uploadBill($params);
+$result = $pay->uploadBill($params);
+var_dump($result);
