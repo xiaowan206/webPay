@@ -29,6 +29,8 @@ class Pay
 
     private $pay_url = 'http://api.jdxiongmao.com/api-api/gateway/trade';
 
+    private $bill_url = 'http://api.jdxiongmao.com/api-api/gateway/bill';
+
     private $merId;
 
     private $noticeUrl;
@@ -211,6 +213,18 @@ class Pay
         if (isset($result['payCode']))
             return $result['payCode'];
         return false;
+    }
+
+    public function uploadBill($params)
+    {
+        $params['merId'] = $this->merId;
+        //这里写死
+        $content = $this->getSignContent($params);
+        $sign = $this->sign($content);
+        $params['signature'] = urlencode($sign);
+        $rst = $this->post_curl($this->bill_url, $params);
+        parse_str($rst, $result);
+        return $result;
     }
 
 }
